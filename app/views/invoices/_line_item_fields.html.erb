@@ -1,0 +1,15 @@
+<% randid = rand(999999) %>
+<tr class="fields" id="line" style="border: 1px solid #999;">
+  <td style="border: 1px solid #999;"><%= f.select :product_id , Product.all.collect{|p| [p.name, p.id]}, {:prompt => 'Select Product'} ,:class => 'citem',:id => "prod-#{randid}" %></td>
+  <td style="border: 1px solid #999;"><%= f.text_field :description,:size => 30 , :id => "desc-#{randid}" ,:readonly => "readonly"%></td>
+  <td style="border: 1px solid #999;"><%= f.text_field :quantity, :size => 2 ,:class => "qntity" ,:id => "qnty-#{randid}"%></td>
+  <td style="border: 1px solid #999;"><%= f.text_field :unitprice,:size => 4 ,  :id => "upri-#{randid}" ,:readonly => "readonly"%></td>
+  <td style="border: 1px solid #999;"><%= f.text_field :amount ,:size => 6 ,  :id => "amount-#{randid}" ,:readonly => "readonly"%></td>
+  <td style="border: 1px solid #999;"><%= f.text_field  :tax ,:size => 4 ,:id => "tax-#{randid}" ,:readonly => "readonly"%></td>
+  <td style="border: 1px solid #999;"><%= f.text_field :total_amount ,:size => 6,  :id => "toamount-#{randid}" ,:class => "total_amount",:readonly => "readonly" %></td>
+  <td style="border: 1px solid #999;"><%= f.hidden_field :_destroy %> <%= link_to_function "Remove", "remove_fields(this,#{randid})" %></td>
+</tr>
+
+<!--<%# if params[:action] != 'edit' %>-->
+
+

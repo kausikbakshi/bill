@@ -1,0 +1,56 @@
+<div style="border: 1px solid #000; width: 1000px; padding: 20px 20px 20px 20px;">
+  <div id="header">INVOICE</div>
+  <div>
+    <div style="float: left; padding-left: 10px;"><b>Invoice # </b>INV-<%= @invoice.id%></div>
+    <div style="float: right; padding-right: 10px;"><b>Date: </b><%= @invoice.created_at.strftime("%m/%d/%Y")%></div><br/>
+    <div><br/></div>
+    <div style="padding-left: 10px;"><b>Due Date: </b><%= @invoice.due_date.strftime("%m/%d/%Y")%></div>
+    <div><br/></div>
+
+    <table style="border: 1px solid #000; width: 100%;">
+      <tr style="border: 1px solid #999;">
+      <th style="border: 1px solid #999;"> Item Name</th>
+      <th style="border: 1px solid #999;"> Description </th>
+      <th style="border: 1px solid #999;"> Qty </th>
+      <th style="border: 1px solid #999;"> Unit Price </th>
+      <th style="border: 1px solid #999;"> Amount </th>
+      <th style="border: 1px solid #999;"> Amount USD </th>
+      </tr>
+      <% @invoice.line_items.each do |c| %>
+        <% @product = Product.find(c.product_id) %>
+        <tr style="border: 1px solid #000;">
+          <td align="center" ><%= @product.name %></td>
+          <td align="center" ><%= c.description %></td>
+          <td align="center" ><%= c.quantity %></td>
+          <td align="center" >$<%= c.unitprice %></td>
+          <td align="center" >$<%= c.amount %></td>
+          <td align="center" >$<%= c.total_amount %></td>
+        </tr>
+        
+      <% end %>
+    </table>
+    <br/>
+    <div style="float :right; padding-right: 60px;"><b>Total- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>$<%= @invoice.total%></div>
+
+  </div>
+  <div><br/><br/><br/></div>
+</div>
+
+<style>
+#header { height: 15px; width: 100%; margin: 20px 0; background: #222; text-align: center; color: white; font: bold 15px Helvetica, Sans-Serif; text-decoration: uppercase; letter-spacing: 20px; padding: 8px 0px; }
+
+table { border-collapse: collapse; border: 1px solid #839E99;
+background: #f1f8ee; font: .9em/1.2em Georgia, "Times New Roman", Times, serif; color: #033; }
+caption { font-size: 1.3em; font-weight: bold; text-align: left; padding: 1em 4px; }
+td, th { padding: 3px 3px .75em 3px; line-height: 1.3em; }
+th { background: #839E99; color: #fff; font-weight: bold; text-align: center; padding-right: .5em; vertical-align: top; }
+thead th { background: #2C5755; text-align: center; }
+.odd td { background: #DBE6DD; }
+.odd th { background: #6E8D88; }
+td a, td a:link { color: #325C91; }
+td a:visited { color: #466C8E; }
+td a:hover, td a:focus { color: #1E4C94; }
+th a, td a:active { color: #fff; }
+tfoot th, tfoot td { background: #2C5755; color: #fff; }
+th + td { padding-left: .5em; }
+</style>

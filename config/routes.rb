@@ -1,6 +1,18 @@
 Bill::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
+  root :to => 'invoices#index'
+
+  resources :invoices do
+    member do
+      end
+      collection do
+        match 'change'
+        get 'additem'
+      end
+    end
+    resources :products
+    resources :line_items
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
