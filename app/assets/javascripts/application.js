@@ -6,4 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+
+//= require ui/progress.js
+//= require ui/jquery.jgrowl.js
+//= require ui/jquery.tipsy.js
+//= require ui/jquery.alerts.js
