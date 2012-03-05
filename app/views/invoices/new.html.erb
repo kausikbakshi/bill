@@ -19,10 +19,10 @@
       <%= f.fields_for :line_items do |items| %>
         <%= render "line_item_fields", :f => items %>
       <% end %>
-      <tr><td align="left" colspan="8" ><%= link_to_add_fields "Add Items", f, :line_items %></td></tr>
+      <tr><td style="text-align: left;"><%= link_to_add_fields "Add Items", f, :line_items %></td></tr>
     </table>
     <br/>
-    <div id ="totalinvoice" ><b style="padding-left: 5px;">Total: &nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;</b><%= f.text_field :total ,:id => "invoicetotal",:size => 15, :readonly => "readonly"%></div>
+    <div id ="totalinvoice" ><b style="padding-left: 5px;">Total: &nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;</b><%= f.text_field :total ,:id => "invoicetotal",:size => 10, :readonly => "readonly"%></div>
     <%= f.submit "Submit" %><span id="vmessage" style= "color: red;"></span>
   <% end %>
 </div>
