@@ -12,7 +12,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(params[:invoice])
     if @invoice.save
       flash[:notice] = "Successfully Invoice Created"
-      redirect_to admin_users_path
+      redirect_to root_url
     else
       render "new"
     end
@@ -27,7 +27,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
     if @invoice.update_attributes(params[:invoice])
       flash[:notice] = "Successfully Invoice Edited"
-      redirect_to admin_users_path
+      redirect_to root_url
     else
       render :action => 'edit'
     end
@@ -37,7 +37,7 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
     if @invoice.destroy
       flash[:notice] = "Successfully Invoice Deleted"
-      redirect_to admin_users_path
+      redirect_to root_url
     end
   end
 
