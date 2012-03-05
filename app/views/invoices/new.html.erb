@@ -4,8 +4,8 @@
   <%= form_for(@invoice, :url => invoices_path) do |f| %>
     <div style="float: left; padding-left: 10px;"><b>Date: </b><%= Time.now.strftime("%m/%d/%Y")%></div>
     <div style="float: left; padding-left: 50px;"><b>Due Date: </b><%= f.text_field :due_date, :id => "datepicker2"%></div>
-    
-    
+
+
     <div style="padding: 10px 0 20px 0;"><br></br></div>
     <table class="imagetable" style="width:auto;">
       <th style="border: 1px solid #999"> Item </th>
@@ -20,10 +20,12 @@
         <%= render "line_item_fields", :f => items %>
       <% end %>
       <tr><td style="text-align: left;"><%= link_to_add_fields "Add Items", f, :line_items %></td></tr>
-    </table>
+    </table>    
+    <div id ="totalinvoice" class="FR" style="padding-right: 90px;"><b style="padding-left: 5px;">Total: &nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;</b><%= f.text_field :total ,:id => "invoicetotal",:size => 8, :readonly => "readonly"%></div>
     <br/>
-    <div id ="totalinvoice" ><b style="padding-left: 5px;">Total: &nbsp;&nbsp;&nbsp;&nbsp;$&nbsp;</b><%= f.text_field :total ,:id => "invoicetotal",:size => 10, :readonly => "readonly"%></div>
-    <%= f.submit "Submit" %><span id="vmessage" style= "color: red;"></span>
+    <div>
+      <%= f.submit "Create Invoice" %>&nbsp;&nbsp;<span id="vmessage" style= "color: red;"></span>
+    </div>
   <% end %>
 </div>
 <div style="height: 40px;"><br></br></div>
