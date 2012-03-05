@@ -1,11 +1,11 @@
 <div><br></br></div>
 <div>
-  <%= form_for(@invoice, :url => admin_invoice_path(:id => @invoice.id) ,:method => 'PUT') do |f| %>
+  <%= form_for(@invoice, :url => invoice_path(:id => @invoice.id) ,:method => 'PUT') do |f| %>
     <div style="float: left; padding-left: 10px;"><b>Date: </b><%= @invoice.created_at.strftime("%m/%d/%Y")%></div>
     <div style="float: left; padding-left: 50px;"><b>Due Date: </b><%= f.text_field :due_date, :id => "datepicker2"%></div>
     <div style="float: left; padding-left: 50px;"><b>Invoice #</b> INV-<%= @invoice.id %></div>
     <div style="padding: 10px 0 20px 0;"><br></br></div>
-    <table>
+    <table class="imagetable" style="width:auto;">
       <th style="border: 1px solid #999"> Item </th>
       <th style="border: 1px solid #999"> Description </th>
       <th style="border: 1px solid #999"> Qty </th>

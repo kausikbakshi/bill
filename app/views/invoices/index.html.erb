@@ -4,21 +4,21 @@
   <th style="border: 1px solid #999"><h3>ALL INVOICES</h3></th>
   <th style="border: 1px solid #999">CREATE DATE</th>
   <th style="border: 1px solid #999">DUE DATE</th>
-  <th style="border: 1px solid #999">ACTIONS</th>
-  <% index = 1 %>
+  <th style="border: 1px solid #999">ACTIONS</th>  
   <% @invoices.each do |invoice| %>
     <tr style="border: 1px solid #999;">
-      <td style="border: 1px solid #999;"><%= index %></td>
-      <td style="border: 1px solid #999;"><%=invoice.created_at.strftime("%m/%d/%Y")%></td>
+      <td style="border: 1px solid #999;"><b>INV # <%= invoice.id %></b></td>
+      <td style="border: 1px solid #999;"><b><%=invoice.created_at.strftime("%m/%d/%Y")%></b></td>
       <% if invoice.due_date > Time.now %>
-        <td style="border: 1px solid #999;color: green;"><%=invoice.due_date.strftime("%m/%d/%Y")%></td>
+        <td style="border: 1px solid #999;color: green;"><b><%=invoice.due_date.strftime("%m/%d/%Y")%></b></td>
       <% else %>
-        <td style="border: 1px solid #999;color: red;"><%=invoice.due_date.strftime("%m/%d/%Y")%></td>
+        <td style="border: 1px solid #999;color: red;"><b><%=invoice.due_date.strftime("%m/%d/%Y")%></b></td>
       <% end %>
       <td style="border: 1px solid #999;">
-
+        <%= link_to image_tag("icons/eye.png"), invoice_path(:id => invoice.id) %>&nbsp;&nbsp;
+        <%= link_to image_tag("icons/pencil.png"), edit_invoice_path(:id => invoice.id) %>&nbsp;&nbsp;
+        <%= link_to image_tag("icons/cross.png"), invoice_path(:id => invoice.id), :confirm => 'Are you sure?', :method => 'DELETE' %>
       </td>
     </tr>
-    <% index = index +1 %>
   <% end %>
 </table>
