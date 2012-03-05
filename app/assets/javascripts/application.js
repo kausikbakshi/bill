@@ -78,7 +78,7 @@ function change_html(incontent){
 
 $(document).ready(function() {
     
-
+    $("#invoicetotal").val(parseFloat(0))
     // jquery for date picker in create invoice page
     $(function(){
         $("#datepicker2").live('click', function() {
@@ -131,7 +131,7 @@ $(document).ready(function() {
                     $(unitprice).val((a.price).toFixed(2));
                     $(quantity).val(1);
                     $(amount).val((a.price).toFixed(2));
-                    $(totalamount).val((a.price).toFixed(2));
+                    $(totalamount).val((a.price).toFixed(2));                    
                 }
                 else{
                     deduct_total($(totalamount).val());
@@ -180,8 +180,6 @@ $(document).ready(function() {
     // function for get total amount when select box changes from one product to another
     function add_total(amount, totalamount) {        
         var invoicetotal = $("#invoicetotal").val();
-        alert(amount);
-        alert(totalamount);
         if (totalamount != ""){
             invoicetotal = parseFloat(invoicetotal) + parseFloat(amount) - parseFloat(totalamount);
             $("#invoicetotal").val(invoicetotal.toFixed(2));
