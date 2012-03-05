@@ -1,1 +1,24 @@
 <h2>INVOICE INDEX </h2>
+
+<table class="imagetable" style="width: 95%;">
+  <th style="border: 1px solid #999"><h3>ALL INVOICES</h3></th>
+  <th style="border: 1px solid #999">CREATE DATE</th>
+  <th style="border: 1px solid #999">DUE DATE</th>
+  <th style="border: 1px solid #999">ACTIONS</th>
+  <% index = 1 %>
+  <% @invoices.each do |invoice| %>
+    <tr style="border: 1px solid #999;">
+      <td style="border: 1px solid #999;"><%= index %></td>
+      <td style="border: 1px solid #999;"><%=invoice.created_at.strftime("%m/%d/%Y")%></td>
+      <% if invoice.due_date > Time.now %>
+        <td style="border: 1px solid #999;color: green;"><%=invoice.due_date.strftime("%m/%d/%Y")%></td>
+      <% else %>
+        <td style="border: 1px solid #999;color: red;"><%=invoice.due_date.strftime("%m/%d/%Y")%></td>
+      <% end %>
+      <td style="border: 1px solid #999;">
+
+      </td>
+    </tr>
+    <% index = index +1 %>
+  <% end %>
+</table>
